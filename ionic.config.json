@@ -1,5 +1,7 @@
 {
-  "name": "sidemenu",
-  "integrations": {},
+  "name": "loteria-confere",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

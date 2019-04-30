@@ -1,0 +1,23 @@
+<div class="jogo-add-component">
+
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="fechar()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Adicionar Jogo</ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content padding>
+
+        <ion-button color="light" expand="full" (click)="escolheLoteria($event)">{{loteria.nome}}</ion-button>
+
+    </ion-content>
+
+</div>

@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="tertiary">
+        <ion-title>
+            Meus Jogos
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="addJogo()">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+
+    <jogo-item [jogo]="{numeros:[1,2,3,4,5],tipo:'quina'}"></jogo-item>
+
+</ion-content>
