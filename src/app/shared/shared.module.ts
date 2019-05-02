@@ -9,6 +9,11 @@ import {JogoItemComponent} from "./components/jogo-item/jogo-item.component";
     declarations: [
         JogoItemComponent
     ],
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+    ],
     exports: [
         IonicModule,
         CommonModule,

@@ -2,7 +2,8 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {Tab2Page} from './tab2.page';
 import {SharedModule} from "../shared/shared.module";
-import {JogoAddComponent, LoteriaPopoverComponent} from "./jogo-add/jogo-add.component";
+import {JogoAddComponent, LoteriaPopoverComponent, RandomPopoverComponent} from "./jogo-add/jogo-add.component";
+import { CartelaComponent } from './cartela/cartela.component';
 
 @NgModule({
     imports: [
@@ -12,11 +13,14 @@ import {JogoAddComponent, LoteriaPopoverComponent} from "./jogo-add/jogo-add.com
     declarations: [
         Tab2Page,
         JogoAddComponent,
-        LoteriaPopoverComponent
+        CartelaComponent,
+        LoteriaPopoverComponent,
+        RandomPopoverComponent
     ],
     entryComponents: [
         JogoAddComponent,
-        LoteriaPopoverComponent
+        LoteriaPopoverComponent,
+        RandomPopoverComponent
     ]
 })
 export class Tab2PageModule { }

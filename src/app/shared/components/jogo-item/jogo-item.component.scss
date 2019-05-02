@@ -1,0 +1,70 @@
+.jogo-item {
+    padding: .25em .5em;
+
+    .numeros {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 0 3px 3px 3px;
+        border: 1px solid #e0e0e0;
+        padding: .3em 0;
+
+        span {
+            display: inline-block;
+            width: 34px;
+            height: 35px;
+            margin: .3em .5em;
+            border-radius: 50%;
+            border: 1px solid #c0c0c0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: .85em;
+        }
+        .active {
+            background-color: dodgerblue;
+            color: #fff;
+        }
+    }
+    .header {
+        padding: .4em;
+        border-radius: 3px 3px 0 0;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: .7em;
+        letter-spacing: .1em;
+        color: #fff;
+    }
+}
+
+.quina {
+    .numeros {
+        border-color: #260085;
+    }
+
+    .header {
+        background-color: #260085;
+    }
+}
+
+.mega {
+    .numeros {
+        border-color: #209869;
+    }
+
+    .header {
+        background-color: #209869;
+    }
+}
+
+.lotomania {
+    .numeros {
+        border-color: #F78100;
+    }
+
+    .header {
+        background-color: #F78100;
+    }
+}

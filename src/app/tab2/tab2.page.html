@@ -11,8 +11,8 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="lista">
 
-    <jogo-item [jogo]="{numeros:[1,2,3,4,5],tipo:'quina'}"></jogo-item>
+    <jogo-item *ngFor="let jogo of jogos; let idx = index;" [jogo]="jogo" (acao)="onAcao($event, idx)"></jogo-item>
 
 </ion-content>

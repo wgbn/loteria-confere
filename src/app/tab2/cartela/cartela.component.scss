@@ -1,0 +1,32 @@
+.cartela-component {
+    .numeros {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 60px;
+
+        span {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            margin: .3em .5em;
+            border-radius: 50%;
+            border: 1px solid #c0c0c0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .active {
+            background-color: dodgerblue;
+            color: #fff;
+        }
+    }
+
+    .total {
+        display: block;
+        text-align: center;
+        padding: .4em 0;
+    }
+}

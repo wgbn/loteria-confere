@@ -23,14 +23,20 @@ export class Tab2Page implements OnInit {
             component: JogoAddComponent
         }).then(add => {
             add.onDidDismiss().then(
-                (data: Object) => {
-                    if (data && data.hasOwnProperty('jogo')) {
-                        this.jogos = this.srv.addJogo(data['jogo']);
+                (result: Object) => {
+                    if (result.data && result.data.hasOwnProperty('jogo')) {
+                        this.jogos = this.srv.addJogo(result.data['jogo']);
                     }
                 }
             );
             add.present();
         });
+    }
+
+    onAcao(ev, index) {
+        if (ev.excluir) {
+            this.jogos = this.srv.deleteJogo(index);
+        }
     }
 
 }

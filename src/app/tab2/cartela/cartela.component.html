@@ -1,0 +1,9 @@
+<div class="cartela-component">
+
+  <strong class="total">{{totalEscolhido}} escolido{{totalEscolhido > 1 ? 's':''}}</strong>
+
+  <div class="numeros">
+      <span *ngFor="let num of cartela" (click)="numClick(num)" [ngClass]="{'active': num.active}">{{num.numero}}</span>
+  </div>
+
+</div>

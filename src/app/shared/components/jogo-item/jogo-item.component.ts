@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
     selector: 'jogo-item',
@@ -7,10 +8,42 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class JogoItemComponent implements OnInit {
 
-    @Input() jogo: any = null;
+    nomes: string[] = ['Quina', 'Mega-Sena', 'LotoMania'];
 
-    constructor() { }
+    @Input() jogo: any = null;
+    @Output() acao: EventEmitter<any> = new EventEmitter<any>();
+
+    constructor(private sheet: ActionSheetController) { }
 
     ngOnInit() { }
+
+    opcoes() {
+        this.sheet.create({
+            header: 'Opções',
+            buttons: [{
+                text: 'Apostar',
+                icon: 'share',
+                handler: () => {
+                    this.acao.emit({apostar: true});
+                }
+            }, {
+                text: 'Excluir',
+                role: 'destructive',
+                icon: 'trash',
+                handler: () => {
+                    this.acao.emit({excluir: true});
+                }
+            }, {
+                text: 'Cancelar',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        }).then(sh => {
+            sh.present();
+        });
+    }
 
 }

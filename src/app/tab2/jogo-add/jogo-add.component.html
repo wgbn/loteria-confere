@@ -6,9 +6,12 @@
                 <ion-icon slot="icon-only" name="close"></ion-icon>
             </ion-button>
         </ion-buttons>
-        <ion-title>Adicionar Jogo</ion-title>
-        <ion-buttons slot="end">
-            <ion-button>
+        <ion-title>Adicionar</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="rnd()" [hidden]="loteria.tipo === null" color="warning">
+                <ion-icon slot="icon-only" name="shuffle"></ion-icon>
+            </ion-button>
+            <ion-button (click)="salvar()" [disabled]="!podeSalvar" color="success">
                 <ion-icon slot="icon-only" name="checkmark"></ion-icon>
             </ion-button>
         </ion-buttons>
@@ -17,6 +20,8 @@
     <ion-content padding>
 
         <ion-button color="light" expand="full" (click)="escolheLoteria($event)">{{loteria.nome}}</ion-button>
+
+        <cartela [loteria]="loteria" [random]="random" (result)="onCartelaResult($event)"></cartela>
 
     </ion-content>
 

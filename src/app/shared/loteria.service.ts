@@ -58,7 +58,7 @@ export class LoteriaService {
         if (tipo !== null) {
             return this.jogos.filter(jogo => jogo.tipo === tipo);
         }
-        return this.jogos;
+        return this.jogos;//.sort((a,b) => a.tipo == b.tipo ? 0 : a.tipo < b.tipo ? -1 : 1);
     }
 
     getConcursos(tipo: Tipos = null): Concurso[] {
@@ -71,6 +71,7 @@ export class LoteriaService {
     addJogo(jogo: Jogo): Jogo[] {
         if (!this.itemExists(Tipos.Jogo, jogo)) {
             this.jogos.push(jogo);
+            this.jogos = [..._sort(this.jogos)];
             this.saveLocal();
         }
         return this.jogos;
@@ -110,3 +111,33 @@ export class LoteriaService {
     }
 
 }
+
+export class TipoLoteria {
+    static cartela: number;
+    static jogo: number[];
+    static premio: number[];
+}
+
+export class Quina extends TipoLoteria {
+    static cartela: number = 80;
+    static jogo: number[] = [5,6,7,8,9,10,11,12,13,14,15];
+    static premio: number[] = [2,3,4,5];
+}
+
+export class MegaSena extends TipoLoteria {
+    static cartela: number = 60;
+    static jogo: number[] = [6,7,8,9,10,11,12,13,14,15];
+    static premio: number[] = [4,5,6];
+}
+
+export class LotoMania extends TipoLoteria {
+    static cartela: number = 100;
+    static jogo: number[] = [50];
+    static premio: number[] = [15,16,17,18,19,20];
+}
+
+export const tiposLoteria = {
+    Quina, MegaSena, LotoMania
+};
+
+const _sort = array => [...array.sort((a,b) => a.tipo == b.tipo ? 0 : a.tipo < b.tipo ? -1 : 1)];
