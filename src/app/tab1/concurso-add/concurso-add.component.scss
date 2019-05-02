@@ -1,0 +1,79 @@
+.concurso-add-component {
+  height: 100vh;
+
+  ion-toolbar {
+    padding: .7em 0 .4em;
+  }
+
+  .numero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 0 .5em 0;
+
+    input {
+      border: 0;
+      border-bottom: 2px solid #3880ff;
+      padding: 0 0 .4em 0;
+      font-size: 1.5em;
+      width: 60%;
+      text-align: center;
+      margin-top: .5em;
+    }
+  }
+
+  .jogos {
+    padding: 1em 0;
+
+    em {
+      display: block;
+      text-align: center;
+    }
+
+    .jogo {
+      display: flex;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      margin: .4em 0;
+
+      .chk {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 50px;
+        border-radius: 3px 0 3px 0;
+        background-color: #e0e0e0;
+      }
+
+      .numeros {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 0 3px 3px 3px;
+        padding: .3em 0;
+        flex-grow: 1;
+
+        span {
+          width: 34px;
+          height: 35px;
+          margin: .3em .5em;
+          border-radius: 50%;
+          border: 1px solid #c0c0c0;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: .85em;
+        }
+
+        .active {
+          background-color: dodgerblue;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+}

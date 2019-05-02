@@ -23,7 +23,7 @@ export class Tab2Page implements OnInit {
             component: JogoAddComponent
         }).then(add => {
             add.onDidDismiss().then(
-                (result: Object) => {
+                (result: any) => {
                     if (result.data && result.data.hasOwnProperty('jogo')) {
                         this.jogos = this.srv.addJogo(result.data['jogo']);
                     }

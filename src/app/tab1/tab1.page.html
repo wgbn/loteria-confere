@@ -3,22 +3,40 @@
         <ion-title>
             Meus Concursos
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="addConcurso()">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-card class="welcome-card">
-        <ion-img src="/assets/shapes.svg"></ion-img>
-        <ion-card-header>
-            <ion-card-subtitle>Começando</ion-card-subtitle>
-            <ion-card-title>Bem vindo!</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <p>Now that your app has been created, you'll want to start building out features and components. Check out
-                some of the resources below for next steps.</p>
-            <ion-button fill="clear" color="primary" expand="full">fechar</ion-button>
-        </ion-card-content>
-    </ion-card>
+    <ng-container *ngIf="concursos.length else vazio">
+        <ion-card class="welcome-card" *ngIf="showCard">
+            <ion-img src="/assets/img/card.jpg"></ion-img>
+            <ion-card-header>
+                <ion-card-subtitle>Começando</ion-card-subtitle>
+                <ion-card-title>Bem vindo!</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p>Now that your app has been created, you'll want to start building out features and components. Check out
+                    some of the resources below for next steps.</p>
+                <ion-button fill="clear" color="primary" expand="full" (click)="fechaCard()">fechar</ion-button>
+            </ion-card-content>
+        </ion-card>
+
+        <div class="concursos">
+
+            <concurso-item *ngFor="let conc of concursos; let idx = index;" [concurso]="conc" (acao)="onAcao($event, idx)" routerLink="/tabs/concursos/{{idx}}"></concurso-item>
+
+        </div>
+
+    </ng-container>
+
+    <ng-template #vazio>
+        <app-vazio icone="filing" texto="nenhum concurso"></app-vazio>
+    </ng-template>
 
 </ion-content>

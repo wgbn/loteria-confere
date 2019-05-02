@@ -1,26 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
-export enum Loteria {
-    Quina, MegaSena, LotoMania
-}
-
-export enum Tipos {
-    Jogo, Concurso
-}
-
-export interface Jogo {
-    numeros: number[];
-    tipo: Tipos;
-}
-
-export interface Concurso {
-    numero: number;
-    data?: string;
-    concursos: Jogo[];
-    tipo: Tipos;
-}
-
 @Injectable({
     providedIn: 'root'
 })
@@ -110,6 +90,34 @@ export class LoteriaService {
         return this.concursos;
     }
 
+    updateConcurso(concurso, index) {
+        if (this.concursos[index]) {
+            this.concursos[index] = {...concurso};
+            this.saveLocal();
+        }
+    }
+
+}
+
+export enum Loteria {
+    Quina, MegaSena, LotoMania
+}
+
+export enum Tipos {
+    Jogo, Concurso
+}
+
+export interface Jogo {
+    numeros: number[];
+    tipo: Tipos;
+}
+
+export interface Concurso {
+    numero: number;
+    data?: string;
+    jogos: Jogo[];
+    resultado?: number[];
+    tipo: Tipos;
 }
 
 export class TipoLoteria {

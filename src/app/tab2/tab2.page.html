@@ -13,6 +13,12 @@
 
 <ion-content class="lista">
 
-    <jogo-item *ngFor="let jogo of jogos; let idx = index;" [jogo]="jogo" (acao)="onAcao($event, idx)"></jogo-item>
+    <ng-container *ngIf="jogos.length else vazio">
+        <jogo-item *ngFor="let jogo of jogos; let idx = index;" [jogo]="jogo" (acao)="onAcao($event, idx)"></jogo-item>
+    </ng-container>
+
+    <ng-template #vazio>
+        <app-vazio icone="grid" texto="nenhum jogo"></app-vazio>
+    </ng-template>
 
 </ion-content>

@@ -11,7 +11,6 @@
         padding: .3em 0;
 
         span {
-            display: inline-block;
             width: 34px;
             height: 35px;
             margin: .3em .5em;
@@ -32,10 +31,18 @@
         padding: .4em;
         border-radius: 3px 3px 0 0;
         display: inline-block;
+        /*align-items: center;
+        justify-content: space-between;
+        width: 35%;*/
         text-transform: uppercase;
         font-size: .7em;
         letter-spacing: .1em;
         color: #fff;
+
+        ion-icon {
+            font-size: 1.2em;
+            margin-left: .5em;
+        }
     }
 }
 

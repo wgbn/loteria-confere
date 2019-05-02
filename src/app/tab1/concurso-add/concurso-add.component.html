@@ -1,0 +1,48 @@
+<div class="concurso-add-component">
+
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="fechar()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Adicionar Concurso</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="salvar()" [disabled]="!podeSalvar" color="success">
+                <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content padding>
+
+        <ion-button color="light" expand="full" (click)="escolheLoteria($event)">{{loteria.nome}}</ion-button>
+
+        <div class="numero">
+            <input type="tel" [(ngModel)]="concurso.numero" placeholder="número" (keyup)="checkJogos()">
+            <input type="date" [(ngModel)]="concurso.data" placeholder="data" (change)="checkJogos()">
+
+            <!--<ion-item>
+                <ion-label>Date</ion-label>
+                <ion-datetime display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+            </ion-item>-->
+        </div>
+
+        <div class="jogos">
+
+            <em [hidden]="jogos.length == 0">Marque os jogos que participarão do concurso</em>
+
+            <div class="jogo" *ngFor="let item of jogos">
+                <div class="chk">
+                    <ion-checkbox slot="end" [(ngModel)]="item.active" (click)="checkJogos()"></ion-checkbox>
+                </div>
+                <div class="numeros">
+                    <span *ngFor="let num of item.jogo.numeros">{{num}}</span>
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</div>

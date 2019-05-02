@@ -20,13 +20,13 @@ export class JogoItemComponent implements OnInit {
     opcoes() {
         this.sheet.create({
             header: 'Opções',
-            buttons: [{
+            buttons: [/*{
                 text: 'Apostar',
                 icon: 'share',
                 handler: () => {
                     this.acao.emit({apostar: true});
                 }
-            }, {
+            },*/ {
                 text: 'Excluir',
                 role: 'destructive',
                 icon: 'trash',

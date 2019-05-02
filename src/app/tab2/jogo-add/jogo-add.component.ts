@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, PopoverController } from "@ionic/angular";
 import { Loteria, tiposLoteria } from "../../shared/loteria.service";
+import {LoteriaPopoverComponent} from "../../shared/components/loteria-popover/loteria-popover.component";
 
 @Component({
     selector: 'app-jogo-add',
@@ -85,29 +86,6 @@ export class JogoAddComponent implements OnInit {
         }
         this.random = [..._selecao.sort()];
         //console.log(this.random);
-    }
-
-}
-
-@Component({
-    selector: 'app-popover-loteria',
-    templateUrl: './loteria-popover.component.html',
-    styleUrls: ['./jogo-add.component.scss'],
-})
-export class LoteriaPopoverComponent implements OnInit {
-
-    loteriasList: any[] = [
-        { nome: 'Quina', tipo: Loteria.Quina },
-        { nome: 'MegaSena', tipo: Loteria.MegaSena },
-        { nome: 'LotoMania', tipo: Loteria.LotoMania },
-    ];
-
-    constructor(private popoverCtrl: PopoverController) { }
-
-    ngOnInit() { }
-
-    fechar(item: any) {
-        this.popoverCtrl.dismiss({ lote: item });
     }
 
 }
