@@ -1,6 +1,7 @@
 <div class="concurso-item" [ngClass]="{'quina': concurso.tipo == 0, 'mega': concurso.tipo == 1, 'lotomania': concurso.tipo == 2}">
   <div class="header">{{nomes[concurso.tipo]}}</div>
   <div class="dados">
+    <span class="data">{{concurso.numero}}</span>
     <span class="data">{{concurso.data | date:'dd/MM/yyyy'}}</span>
     <span class="jogos">{{concurso.jogos.length}} jogo{{concurso.jogos.length > 1 ? 's':''}}</span>
   </div>

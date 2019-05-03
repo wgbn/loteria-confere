@@ -16,8 +16,17 @@ export class Tab1Page implements OnInit {
     constructor(private srv: LoteriaService, private modalCtrl: ModalController) { }
 
     ngOnInit(): void {
-        this.loadConcursos();
+        // this.loadConcursos();
         this.isShowCard();
+    }
+
+    ionViewWillEnter() {
+        console.log('ionViewWillEnter', new Date().getTime());
+        this.loadConcursos();
+    }
+
+    ngAfterViewInit() {
+        console.log('ngAfterViewInit', new Date().getTime());
     }
 
     private isShowCard() {
@@ -26,7 +35,7 @@ export class Tab1Page implements OnInit {
     }
 
     loadConcursos() {
-        this.concursos = this.srv.getConcursos();
+        this.concursos = this.srv.getConcursos().filter(c => !c.hasOwnProperty('resultado') || !c.resultado.length);
     }
 
     addConcurso() {
@@ -36,7 +45,8 @@ export class Tab1Page implements OnInit {
             add.onDidDismiss().then(
                 (result: any) => {
                     if (result.data && result.data.hasOwnProperty('concurso')) {
-                        this.concursos = this.srv.addConcurso(result.data['concurso']);
+                        this.srv.addConcurso(result.data['concurso']);
+                        this.loadConcursos();
                         //console.log(result.data['concurso']);
                     }
                 }

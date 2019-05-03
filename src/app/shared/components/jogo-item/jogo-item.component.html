@@ -1,6 +1,6 @@
 <div class="jogo-item" [ngClass]="{'quina': jogo.tipo == 0, 'mega': jogo.tipo == 1, 'lotomania': jogo.tipo == 2}">
   <div class="header">{{nomes[jogo.tipo]}}</div>
   <div class="numeros" (click)="opcoes()">
-      <span *ngFor="let num of jogo.numeros">{{num}}</span>
+      <span *ngFor="let num of jogo.numeros" [ngClass]="{'active': resultado.indexOf(num) > -1}">{{num}}</span>
   </div>
 </div>

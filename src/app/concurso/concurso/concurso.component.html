@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <!--<ion-button (click)="voltar()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>-->
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Concurso {{concurso.numero}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="concurso-component">
+
+    <h2>Concurso: {{concurso.numero}}</h2>
+    <h4>{{concurso.data | date:'dd/MM/yyyy'}}</h4>
+
+    <div class="ion-text-center verificar" *ngIf="!concurso.resultado.length">
+        <ion-button color="warning" (click)="verificarResultado()" [disabled]="showLoad">
+            <ng-container *ngIf="!showLoad else load">
+                <ion-icon name="checkmark"></ion-icon>
+                <span>verificar</span>
+            </ng-container>
+            <ng-template #load>
+                <ion-spinner name="dots"></ion-spinner>
+            </ng-template>
+        </ion-button>
+    </div>
+
+    <ng-container *ngIf="concurso.resultado.length">
+        <table>
+            <tr>
+                <th colspan="2">{{concurso.resultado.join(' - ')}}</th>
+            </tr>
+            <tr *ngFor="let gan of concurso.ganhadores">
+                <td>{{gan.acertos}} acertos, {{gan.qtde}} pessoa{{gan.qtde > 1 ? 's':''}}</td>
+                <td>{{format(gan.valor, 'pt', 'R$')}}</td>
+            </tr>
+        </table>
+    </ng-container>
+
+    <div class="lista">
+        <jogo-item *ngFor="let jogo of concurso.jogos; let idx = index;" [jogo]="jogo"
+                   (acao)="onAcao($event, idx)" [resultado]="concurso.resultado"></jogo-item>
+    </div>
+
+</ion-content>

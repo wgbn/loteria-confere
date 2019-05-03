@@ -1,0 +1,46 @@
+.concurso-component {
+  h2, h4 {
+    text-align: center;
+    margin: 0;
+  }
+
+  h2 {
+    margin-top: .5em;
+  }
+
+  h4 {
+    margin-bottom: .5em;
+  }
+
+  .verificar {
+    ion-button {
+      span, ion-icon {
+        color: #878787;
+      }
+    }
+  }
+
+  table {
+    width: 90%;
+    margin: .3em auto;
+    font-size: .9em;
+
+    tr {
+      th {
+        background-color: #ffce00;
+        padding: .3em;
+        text-transform: uppercase;
+        border-radius: 3px 3px 0 0;
+      }
+      td {
+        padding: .2em;
+      }
+    }
+    tr:nth-child(even) {
+      background-color: rgba(255, 206, 0, 0.2);
+    }
+    tr:nth-child(odd) {
+      background-color: rgba(255, 206, 0, 0.3);
+    }
+  }
+}

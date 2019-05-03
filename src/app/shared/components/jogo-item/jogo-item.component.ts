@@ -11,6 +11,7 @@ export class JogoItemComponent implements OnInit {
     nomes: string[] = ['Quina', 'Mega-Sena', 'LotoMania'];
 
     @Input() jogo: any = null;
+    @Input() resultado: number[] = [];
     @Output() acao: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private sheet: ActionSheetController) { }

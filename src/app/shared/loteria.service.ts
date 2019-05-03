@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ export class LoteriaService {
     private jogos: Jogo[] = [];
     private concursos: Concurso[] = [];
 
-    constructor(/*private http: HttpClient*/) {
+    constructor(private http: HttpClient) {
         let _jogos = localStorage.getItem('jogos');
         let _concursos = localStorage.getItem('concursos');
         this.jogos = _jogos ? JSON.parse(_jogos) : [];
@@ -34,14 +35,14 @@ export class LoteriaService {
         return false;
     }
 
-    getJogos(tipo: Tipos = null): Jogo[] {
+    getJogos(tipo: Loteria = null): Jogo[] {
         if (tipo !== null) {
             return this.jogos.filter(jogo => jogo.tipo === tipo);
         }
         return this.jogos;//.sort((a,b) => a.tipo == b.tipo ? 0 : a.tipo < b.tipo ? -1 : 1);
     }
 
-    getConcursos(tipo: Tipos = null): Concurso[] {
+    getConcursos(tipo: Loteria = null): Concurso[] {
         if (tipo !== null) {
             return this.concursos.filter(conc => conc.tipo === tipo);
         }
@@ -74,6 +75,11 @@ export class LoteriaService {
         return this.concursos[index] || null;
     }
 
+    getConcursoPorTipoNumero(tipo: Loteria, numero: number): any | null {
+        let index = this.concursos.findIndex(c => c.tipo == tipo && c.numero == numero);
+        return {index, concurso: this.getConcurso(index)};
+    }
+
     deleteJogo(index: number): Jogo[] {
         if (this.jogos[index]) {
             this.jogos.splice(index, 1);
@@ -97,6 +103,10 @@ export class LoteriaService {
         }
     }
 
+    getResultado(concurso: Concurso): Observable<any> {
+        return this.http.get(`https://www.lotodicas.com.br/api/${concurso.tipo == Loteria.Quina ? 'quina' : concurso.tipo == Loteria.MegaSena ? 'mega-sena' : 'lotomania'}/${concurso.numero}`);
+    }
+
 }
 
 export enum Loteria {
@@ -109,7 +119,7 @@ export enum Tipos {
 
 export interface Jogo {
     numeros: number[];
-    tipo: Tipos;
+    tipo: Loteria;
 }
 
 export interface Concurso {
@@ -117,7 +127,8 @@ export interface Concurso {
     data?: string;
     jogos: Jogo[];
     resultado?: number[];
-    tipo: Tipos;
+    ganhadores?: any[];
+    tipo: Loteria;
 }
 
 export class TipoLoteria {

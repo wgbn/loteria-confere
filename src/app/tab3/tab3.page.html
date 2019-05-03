@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="tertiary">
+        <ion-title>
+            Concursos Conferidos
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+    <ng-container *ngIf="concursos.length else vazio">
+
+        <div class="concursos">
+
+            <concurso-item *ngFor="let conc of concursos; let idx = index;" [concurso]="conc"
+                           (acao)="onAcao($event, idx)"
+                           routerLink="/concurso/{{conc.tipo}}/{{conc.numero}}"></concurso-item>
+
+        </div>
+
+    </ng-container>
+
+    <ng-template #vazio>
+        <app-vazio icone="filing" texto="nenhum concurso"></app-vazio>
+    </ng-template>
+
+</ion-content>
